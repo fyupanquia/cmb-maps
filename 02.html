@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <h3>My Google Maps Demo</h3>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var uluru = {lat: -12.1877684, lng: -76.9374339};
+        var uluru2 = {lat: -12.187908, lng: -76.9220769};
+
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: uluru
+        });
+
+        var infoWindow = new google.maps.InfoWindow;
+
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+          label:'A'
+        });
+
+        var marker2 = new google.maps.Marker({
+          position: uluru2,
+          map: map,
+          label:'B'
+        });
+
+
+        marker.addListener('click', function() {
+          infoWindow.setContent('<div> PUZANGUISEÑAL !!!!!</div>');
+          infoWindow.open(map, marker);
+        });
+
+
+        marker2.addListener('click', function() {
+          infoWindow.setContent('<iframe src="https://video.flim17-1.fna.fbcdn.net/v/t42.1790-2/30289085_227585327978295_6328979467112808448_n.mp4?_nc_cat=0&efg=eyJ2ZW5jb2RlX3RhZyI6InN2ZV9zZCJ9&oh=9e11988594e6f76cd991132875ca9238&oe=5AF171B4" width="400px" height="400px" ></iframe>');
+          infoWindow.open(map, marker2);
+        });
+
+
+        
+
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSrJPEFKWk0ioKkQluMwC82PMgYmWTH18&callback=initMap">
+    </script>
+  </body>
+</html>
